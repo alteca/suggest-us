@@ -8,3 +8,10 @@ API used to vote for a subject to present in future presentation
 ## Run in prod
 
 >npm run start:prod
+
+## API
+
+Desc | URL | HTTP verb | args | response | error
+------------ | ------------- | -------------
+login with an existing user | /api/auth/signin | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}
+login with new user | /api/auth/signup | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}

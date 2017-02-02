@@ -15,9 +15,9 @@ User.sync()
     id: 1,
     username: 'admin',
     active: true
-  }, 'admin', (() => {
+  }, 'admin', () => {
     console.log('finished populating users');
-  }));
+  });
 });
 
 Subject.sync()
