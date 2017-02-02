@@ -15,5 +15,6 @@ var db = {
 
 // Insert models below
 db.User = db.sequelize.import('../api/user/user.model');
+db.Subject = db.sequelize.import('../api/subject/subject.model');
 
 export default db;

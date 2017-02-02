@@ -1,15 +1,14 @@
 'use strict';
 
 import express from 'express';
-const controller = require('./auth.controller');
-
 import passport from 'passport';
+import { serialize, generateToken, login } from './auth.controller';
 
 var router = express.Router();
 
 router.post('/',
   passport.authenticate('local', {
     session: false
-  }), controller.serialize, controller.generateToken, controller.login);
+  }), serialize, generateToken, login);
 
-module.exports = router;
+export default router;
