@@ -13,5 +13,5 @@ API used to vote for a subject to present in future presentation
 
 Desc | URL | HTTP verb | args | response | error
 ------------ | ------------- | -------------
-login with an existing user | /api/auth/signin | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}
-login with new user | /api/auth/signup | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}
+login with an existing user | /api/auth/login | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}
+login with new user | /api/auth/join | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}

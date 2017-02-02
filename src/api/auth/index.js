@@ -6,12 +6,12 @@ import { serialize, generateToken, login, create } from './auth.controller';
 
 var router = express.Router();
 
-router.post('/signin',
+router.post('/login',
   passport.authenticate('local', {
     session: false
   }), serialize, generateToken, login);
 
-router.post('/signup',
+router.post('/join',
   create,
   passport.authenticate('local', {
     session: false
