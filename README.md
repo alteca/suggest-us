@@ -1,17 +1,57 @@
-# suggest-us
+# Suggest-us
 API used to vote for a subject to present in future presentation
+
+## Installation
+
+```sh
+$ npm install
+```
 
 ## Run in dev
 
->npm start
+```sh
+$ npm start
+```
 
 ## Run in prod
 
->npm run start:prod
+```sh
+$ npm run start:prod
+```
 
 ## API
 
-Desc | URL | HTTP verb | args | response | error
------------- | ------------- | -------------
-login with an existing user | /api/auth/login | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}
-login with new user | /api/auth/join | POST | {"username": "admin", "password": "admin"} | {"user": {"id": 1, "username": "admin"}, "token": ""} | {"error": "error desc"}
+For all endpoints add the header
+> Content-Type: application/json
+
+### Login
+
+Login with an existing user
+
+url
+> POST api/auth/login
+
+params
+> {"username": "admin", "password": "admin"}
+
+response success
+> {"user": {"id": 1, "username": "admin"}, "token": ""}
+
+response error
+> {"error": "error desc"}
+
+### Join
+
+Create a new account and login
+
+url
+> POST api/auth/join
+
+params
+> {"username": "newuser", "password": "newuser"}
+
+response success
+> {"user": {"id": 2, "username": "newuser"}, "token": ""}
+
+response error
+> {"error": "error desc"}
