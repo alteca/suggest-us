@@ -2,7 +2,7 @@
 
 import express from 'express';
 import passport from 'passport';
-import { serialize, generateToken, login, create } from './auth.controller';
+import { serialize, generateToken, login, create } from './user.controller';
 
 var router = express.Router();
 
