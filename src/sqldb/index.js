@@ -16,5 +16,6 @@ var db = {
 // Insert models below
 db.User = db.sequelize.import('../api/user/user.model');
 db.Subject = db.sequelize.import('../api/subject/subject.model');
+db.Vote = db.sequelize.import('../api/vote/vote.model');
 
 export default db;
