@@ -68,9 +68,11 @@ export function index(req, res) {
 
 // Gets a single votes from the DB
 export function show(req, res) {
+  const { subjectId, userId } = req.params;
   return Vote.find({
     where: {
-      id: req.params.id
+      subjectId: subjectId,
+      userId: userId
     }
   })
   .then(handleEntityNotFound(res))
@@ -80,23 +82,21 @@ export function show(req, res) {
 
 // Creates a new vote in the DB
 export function create(req, res) {
-  // test if nb of votes
+  Vote.create(req.body)
+  .then(responseWithResult(res, 201))
+  .catch(handleError(res));
+}
+
+// Deletes a Vote from the DB
+export function destroy(req, res) {
+  const { subjectId, userId } = req.params;
   return Vote.find({
-    where: sqldb.sequelize.where(
-      sqldb.sequelize.fn('lower', sqldb.sequelize.col('name')),
-      subjectName.toLowerCase()
-    )
-  })
-  .then((entity) => {
-    if(entity) {
-      // return error
-      return handleError(res, 409)({
-        error: 'Number of votes exceed'
-      });
-    } else {
-      return Vote.create(req.body);
+    where: {
+      subjectId: subjectId,
+      userId: userId
     }
   })
-  .then(responseWithResult(res, 201))
+  .then(handleEntityNotFound(res))
+  .then(removeEntity(res))
   .catch(handleError(res));
 }

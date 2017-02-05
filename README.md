@@ -55,3 +55,22 @@ response success
 
 response error
 > {"error": "error desc"}
+
+
+### Subjects
+
+structure
+> { "id" => integer, "name" => string }
+
+get all
+> GET api/subjects
+> [{}, {}, ...]
+
+### Votes
+
+structure
+> { "userId" => integer, "subjectId" => integer, "date" => date }
+
+get all
+> GET api/votes
+> [{}, {}, ...]

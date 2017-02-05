@@ -7,19 +7,22 @@ export default function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       references: {
-         model: 'User',
-         key: 'id',
+         model: 'Users',
+         key: 'id'
       }
     },
     subjectId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      unique: true,
       references: {
-         model: 'Subject',
-         key: 'id',
+         model: 'Subjects',
+         key: 'id'
       }
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      defaultValue: sequelize.NOW
     }
   });
 }
