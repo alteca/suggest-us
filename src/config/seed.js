@@ -5,38 +5,56 @@
 
 'use strict';
 import sqldb from '../sqldb';
-var User = sqldb.User;
-var Subject = sqldb.Subject;
+import Promise from 'promise';
+const { User, Subject, Vote } = sqldb;
 
 User.sync()
+.then(() => Subject.sync())
+.then(() => Vote.sync())
+.then(() => Vote.destroy({ where: {} }))
+.then(() => Subject.destroy({ where: {} }))
 .then(() => User.destroy({ where: {} }))
-.then(() => {
-  User.register({
-    id: 1,
-    username: 'admin',
-    active: true
-  }, 'admin', () => {
-    console.log('finished populating users');
-  });
-});
 
-Subject.sync()
-  .then(() => {
-    return Subject.destroy({ where: {}});
-  })
-  .then(() => {
-    return Subject.bulkCreate([{
-      name: "Redux"
-    }, {
-      name: "Nodejs"
-    }, {
-      name: "Webpack"
-    }, {
-      name: "Angular Universal"
-    }, {
-      name: "React"
-    }]);
-  })
-  .then(() => {
-    console.log('finished populating subjects');
+.then(() => {
+  return new Promise((fulfill, reject) => {
+    User.register({
+      id: 1,
+      username: 'admin',
+      active: true
+    }, 'admin', () => {
+      console.log('finished populating Users');
+      fulfill();
+    });
   });
+})
+.then(() => {
+  return Subject.bulkCreate([{
+    id: 1,
+    name: "Redux"
+  }, {
+    id: 2,
+    name: "Nodejs"
+  }, {
+    id: 3,
+    name: "Webpack"
+  }, {
+    id: 4,
+    name: "Angular Universal"
+  }, {
+    id: 5,
+    name: "React"
+  }]);
+})
+.then(() => {
+  console.log('finished populating Subjects');
+})
+.then(() => {
+  return Vote.bulkCreate([{
+    userId: 1,
+    subjectId: 1,
+    date: Date.now()
+  }]);
+})
+.then(() => {
+  console.log('finished populating Votes');
+})
