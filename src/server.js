@@ -15,7 +15,7 @@ const app = new Express();
 const server = new Server(app);
 
 // config all app
-configure(app);
+configure(app, server);
 routes(app);
 
 // start the server
