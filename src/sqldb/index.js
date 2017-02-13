@@ -4,18 +4,15 @@
 
 'use strict';
 
-import path from 'path';
-import config from '../config/environment';
-import Sequelize from 'sequelize';
-
-var db = {
-  Sequelize,
-  sequelize: new Sequelize(config.sequelize.uri, config.sequelize.options)
-};
+import db from './db';
+import UserModel from './models/user.model';
+import SubjectModel from './models/subject.model';
+import VoteModel from './models/vote.model';
 
 // Insert models below
-db.User = db.sequelize.import('../api/user/user.model');
-db.Subject = db.sequelize.import('../api/subject/subject.model');
-db.Vote = db.sequelize.import('../api/vote/vote.model');
+db.User = UserModel;
+db.Subject = SubjectModel;
+db.Vote = VoteModel;
+
 
 export default db;

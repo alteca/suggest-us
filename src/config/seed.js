@@ -49,11 +49,15 @@ User.sync()
   console.log('finished populating Subjects');
 })
 .then(() => {
-  return Vote.bulkCreate([{
-    userId: 1,
-    subjectId: 1,
+  return Vote.create({
     date: Date.now()
-  }]);
+  })
+  .then((vote) => {
+    vote.setUser(1);
+    vote.setSubject(1);
+    
+    return vote;
+  });
 })
 .then(() => {
   console.log('finished populating Votes');

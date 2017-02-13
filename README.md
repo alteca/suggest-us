@@ -24,53 +24,29 @@ $ npm run start:prod
 For all endpoints add the header
 > Content-Type: application/json
 
-### Login
+### Auth
 
-Login with an existing user
-
-url
-> POST api/auth/login
-
-params
-> {"username": "admin", "password": "admin"}
-
-response success
-> {"user": {"id": 1, "username": "admin"}, "token": ""}
-
-response error
-> {"error": "error desc"}
-
-### Join
-
-Create a new account and login
-
-url
-> POST api/auth/join
-
-params
-> {"username": "newuser", "password": "newuser"}
-
-response success
-> {"user": {"id": 2, "username": "newuser"}, "token": ""}
-
-response error
-> {"error": "error desc"}
+|Action|Verb|Url|Params|Success|Error|
+|-----|----|-----------|-------|-------|-------|
+|login|POST|/api/auth/login|{"username": "admin", "password": "admin"}|{"user": {"id": 1, "username": "admin"}, "token": ""}|{"error": "error desc"}|
+|join|POST|/api/auth/join|{"username": "newuser", "password": "newuser"}|{"user": {"id": 2, "username": "newuser"}, "token": ""}|{"error": "error desc"}|
 
 
 ### Subjects
-
 structure
 > { "id" => integer, "name" => string }
 
-get all
-> GET api/subjects
-> [{}, {}, ...]
+|Action|Verb|Url|Params|Success|Error|
+|-----|----|-----------|-------|-------|-------|
+|get all|GET|/api/subjects|{}|[{}, {}, ...]|{"error": "error desc"}|
+
 
 ### Votes
 
 structure
 > { "userId" => integer, "subjectId" => integer, "date" => date }
 
-get all
-> GET api/votes
-> [{}, {}, ...]
+|Action|Verb|Url|Params|Success|Error|
+|-----|----|-----------|-------|-------|-------|
+|get all|GET|/api/votes|{}|[{}, {}, ...]|{"error": "error desc"}|
+|synthesize|GET|/api/synthesize|{}|[{vote, subject, user}, ...]|{"error": "error desc"}|

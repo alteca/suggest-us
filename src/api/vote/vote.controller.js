@@ -9,11 +9,12 @@
 'use strict';
 
 import sqldb from '../../sqldb';
-const Vote = sqldb.Vote;
+const { Vote, User, Subject } = sqldb;
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
+    console.log(err);
     res.status(statusCode).send(err);
   };
 }
@@ -99,4 +100,15 @@ export function destroy(req, res) {
   .then(handleEntityNotFound(res))
   .then(removeEntity(res))
   .catch(handleError(res));
+}
+
+
+export function synthesize(req, res) {
+  return Vote.findAll({ include: [
+    { model: User, required: true, attributes: ['username', 'id'] },
+    { model: Subject, required: true, attributes: ['name', 'id'] }
+   ]})
+  .then(responseWithResult(res))
+  .catch(handleError(res));
+
 }
