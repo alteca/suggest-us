@@ -25,11 +25,13 @@ For all endpoints add the header
 > Content-Type: application/json
 
 ### Auth
+user structure
+> {"username": "admin", "password": "admin"}
 
 |Action|Verb|Url|Params|Success|Error|
 |-----|----|-----------|-------|-------|-------|
-|login|POST|/api/auth/login|{"username": "admin", "password": "admin"}|{"user": {"id": 1, "username": "admin"}, "token": ""}|{"error": "error desc"}|
-|join|POST|/api/auth/join|{"username": "newuser", "password": "newuser"}|{"user": {"id": 2, "username": "newuser"}, "token": ""}|{"error": "error desc"}|
+|login|POST|/api/auth/login|{"username": "admin", "password": "admin"}|{"user": {}, "token": ""}|{"error": "error desc"}|
+|join|POST|/api/auth/join|{"username": "newuser", "password": "newuser"}|{"user": {}, "token": ""}|{"error": "error desc"}|
 
 
 ### Subjects
