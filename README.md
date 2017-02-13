@@ -30,8 +30,8 @@ user structure
 
 |Action|Verb|Url|Params|Success|Error|
 |-----|----|-----------|-------|-------|-------|
-|login|POST|/api/auth/login|{"username": "admin", "password": "admin"}|{"user": {}, "token": ""}|{"error": "error desc"}|
-|join|POST|/api/auth/join|{"username": "newuser", "password": "newuser"}|{"user": {}, "token": ""}|{"error": "error desc"}|
+|login|POST|/api/auth/login|{"username":"admin", "password":"admin"}|{"user":{}, "token":""}|{"error":"error desc"}|
+|join|POST|/api/auth/join|{"username":"newuser", "password":"newuser"}|{"user":{}, "token":""}|{"error":"error desc"}|
 
 
 ### Subjects
@@ -40,7 +40,7 @@ structure
 
 |Action|Verb|Url|Params|Success|Error|
 |-----|----|-----------|-------|-------|-------|
-|get all|GET|/api/subjects|{}|[{}, {}, ...]|{"error": "error desc"}|
+|get all|GET|/api/subjects|{}|[{}, {}, ...]|{"error":"error desc"}|
 
 
 ### Votes
@@ -50,5 +50,5 @@ structure
 
 |Action|Verb|Url|Params|Success|Error|
 |-----|----|-----------|-------|-------|-------|
-|get all|GET|/api/votes|{}|[{}, {}, ...]|{"error": "error desc"}|
-|synthesize|GET|/api/synthesize|{}|[{vote, subject, user}, ...]|{"error": "error desc"}|
+|get all|GET|/api/votes|{}|[{}, {}, ...]|{"error":"error desc"}|
+|synthesize|GET|/api/synthesize|{}|[{"voteCount":x,"Subject":{}}, ...]|{"error":"error desc"}|

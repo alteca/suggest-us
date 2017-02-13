@@ -104,10 +104,13 @@ export function destroy(req, res) {
 
 
 export function synthesize(req, res) {
-  return Vote.findAll({ include: [
-    { model: User, required: true, attributes: ['username', 'id'] },
-    { model: Subject, required: true, attributes: ['name', 'id'] }
-   ]})
+  return Vote.findAll({
+    attributes: ['Vote.*', [sqldb.sequelize.fn('COUNT', 'Vote.id'), 'voteCount']],
+    include: [
+      { model: Subject, required: true, attributes: ['name', 'id'] }
+    ],
+    group: ['Subject.id']
+  })
   .then(responseWithResult(res))
   .catch(handleError(res));
 

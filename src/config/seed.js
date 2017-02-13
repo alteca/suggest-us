@@ -55,7 +55,18 @@ User.sync()
   .then((vote) => {
     vote.setUser(1);
     vote.setSubject(1);
-    
+
+    return vote;
+  })
+  .then(() => {
+    return Vote.create({
+      date: Date.now()
+    })
+  })
+  .then((vote) => {
+    vote.setUser(1);
+    vote.setSubject(2);
+
     return vote;
   });
 })
